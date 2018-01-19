@@ -1,0 +1,53 @@
+.title {
+	text-align: center;
+}
+
+#giphy-form {
+	height: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	padding-right: 20px;
+	padding-left: 20px;
+	margin: 10px;
+	float: left;
+}
+
+#giphy-button-div {
+	height: 50px;
+	padding: 50px;
+	margin: 10px;
+	float:left;
+}
+
+.giphy-label {
+	font-size: 20px;
+}
+
+#add-giphy {
+	font-size: 20px;
+}
+
+#giphy-input {
+	font-size: 20px;
+}
+
+.giphy-button {
+	margin: 10px;
+	font-size: 20px;
+}
+
+.giph-div {
+	margin: 10px;
+	float: left;
+}
+
+.giph-container {
+	clear: left;
+	width: 1325px;
+	height: 800px;
+	margin: 10px;
+}
+
+.gif-div {
+	float: left;
+}
