@@ -9,6 +9,7 @@
       // Function for displaying movie data
       function renderButtons() {
         $("#giphy-button-div").empty();
+        $("#giphy-label").empty();  //ug, can't clear the input field!!!
         for (i=0; i<giphs.length; i++) {
 
           var a = $("<button>");
@@ -25,7 +26,7 @@
         console.log ("add button pushed");
         var newGiph = $("#giphy-input").val();
         giphs.push(newGiph);
-        $("#gihpy-input").empty();   //why doesn't this empty the field?
+        $("#gihpy-input").val("");   //why doesn't this empty the field?
         renderButtons();
       });
 
@@ -34,7 +35,7 @@
       $(document).on("click", ".giphy-button", function() {
         $(".giph-container").empty();
         giphySearch = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q="+giphySearch+"&rating=g&&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q="+giphySearch+"&api_key=dc6zaTOxFJmzC&limit=10";
         $.ajax ({
         url: queryURL,
         method: "GET"
@@ -42,19 +43,22 @@
         for (i=0; i<10; i++) {
           var giphDiv = $("<div class='giph-div'>");
           ratingArray[i] = response.data[i].rating;
-          var pRating = $("<p>").text("Rating: " + ratingArray[i]);
+          var p = $("<p>").text("Rating: " + ratingArray[i]);
           imageArray[i] = response.data[i].images.fixed_height_still.url;
           giphArray[i] = response.data[i].images.fixed_height.url;
           var giph = $("<img>");
           giph.addClass("giph-still");
           giph.attr("item-number", i)
           giph.attr("src", imageArray[i]);
+          giph.attr("alt", "Giph Image");
           giph.attr("text", response.data[i].rating);
           giphDiv.append(giph);
+          giphDiv.prepend(p);
           $(".giph-container").append(giphDiv);
         }    
       });
     });
+
       //here we change the class of the div and change the source image to the .gif
       $(document).on("click", ".giph-still", function() {
           var index = $(this).attr("item-number");
