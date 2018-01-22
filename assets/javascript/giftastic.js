@@ -36,9 +36,10 @@
         $(".giph-container").empty();
         giphySearch = $(this).attr("data-name");
         // make a call to https (a secure site?)
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q="+giphySearch+"&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q="+giphySearch+"&api_key=dc6zaTOxFJmzC&limit=10";
         $.ajax ({
         url: queryURL,
+        crossDomain: true,
         method: "GET"
       }).done(function(response){
         for (i=0; i<10; i++) {
