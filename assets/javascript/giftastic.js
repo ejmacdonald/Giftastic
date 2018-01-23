@@ -1,5 +1,5 @@
       // Initial array of movies
-      var giphs = [];
+      var giphs = ["flower", "run", "Star Trek", "Star Wars", "lightning", "Patriots", "Camp", "America", "Oops", "Yes", "Run Away"];
       var giphButton = [];
       var giphySearch;
       var imageArray = [];
@@ -9,7 +9,7 @@
       // Function for displaying movie data
       function renderButtons() {
         $("#giphy-button-div").empty();
-        $("#giphy-label").empty();  //ug, can't clear the input field!!!
+        $("#giphy-input").val("");
         for (i=0; i<giphs.length; i++) {
 
           var a = $("<button>");
@@ -24,9 +24,8 @@
       $("#add-giphy").on("click", function(event) {
         event.preventDefault();
         console.log ("add button pushed");
-        var newGiph = $("#giphy-input").val();
+        var newGiph = $("#giphy-input").val().trim();
         giphs.push(newGiph);
-        $("#gihpy-input").val("");   //why doesn't this empty the field?
         renderButtons();
       });
 
